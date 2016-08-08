@@ -2,7 +2,7 @@
 
 namespace ServiceInterfaces
 {
-    public interface IToDoItemService
+    public interface IToDoItemService:IService<ToDoItem,int>
     {
         void InsertAsyncToDoItem(ToDoItem toDoItem);
     }

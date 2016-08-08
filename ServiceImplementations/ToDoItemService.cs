@@ -2,7 +2,7 @@
 using ServiceInterfaces;
 namespace ServiceImplementations
 {
-    public class ToDoItemService: IToDoItemService
+    public class ToDoItemService: BaseService<ToDoItem, int>, IToDoItemService
     {
         public void InsertAsyncToDoItem(ToDoItem toDoItem)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Domain;
 
 namespace ServiceInterfaces
@@ -11,11 +12,11 @@ namespace ServiceInterfaces
     /// <typeparam name="V">id type</typeparam>
     public interface IService<T, V>
     {
-        void InsertAsync(T entity);
+        Task InsertAsync(T entity);
         void Insert(T entity);
-        void UpdateAync(T entity);
+        Task UpdateAync(T entity);
         void Update(T entity);
-        void DeleteAsync(V id);
+        Task DeleteAsync(V id);
         void Delete(V id);
         IQueryable<T> Get();
         IQueryable<T> GetAsync();

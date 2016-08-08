@@ -1,40 +1,44 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.InteropServices;
-using ServiceInterfaces;
+using System.Threading.Tasks;
 
 namespace ServiceImplementations
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"> entity type </typeparam>
+    /// <typeparam name="V"> id type </typeparam>
     public abstract class BaseService<T,V>
     {
-        public void InsertAsync(T entity)
+        public async Task InsertAsync(T entity)
         {
-            
+            throw new NotImplementedException();
         }
 
-        void Insert(T entity)
+        public void Insert(T entity)
         {
-            
+            throw new NotImplementedException();
         }
 
-        void UpdateAync(T entity)
+        public async Task UpdateAync(T entity)
         {
-            
+            throw new NotImplementedException();
         }
 
-        void Update(T entity)
+        public void Update(T entity)
         {
-            
+            throw new NotImplementedException();
         }
 
-        void DeleteAsync(V id)
+        public async Task DeleteAsync(V id)
         {
-            
+            throw new NotImplementedException();
         }
 
-        void Delete(V id)
+        public void Delete(V id)
         {
-            
+            throw new NotImplementedException();
         }
 
         public IQueryable<T> Get()

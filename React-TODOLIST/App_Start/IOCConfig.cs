@@ -11,7 +11,7 @@ namespace React_TODOLIST
         {
             public static void Register()
             {
-                var builder = new  ContainerBuilder();
+                var builder = new ContainerBuilder();
 
                 RegisterMVC(builder);
                 RegisterServices(builder);
