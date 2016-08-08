@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.React-TODOLIST", "React-TODOLIST\1.React-TODOLIST.csproj", "{D369164B-1557-4188-B4E0-62463D0CA40E}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.Domain", "Domain\4.Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary", "HelperLibrary\HelperLibrary.csproj", "{36829BE8-7D8F-4FFB-8086-61B53597424E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.AutofacModule", "AutofacModule\6.AutofacModule.csproj", "{0B2A6F75-17C3-4FFF-9C4C-17CBD99D0934}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.AutofacModule", "AutofacModule\5.AutofacModule.csproj", "{0B2A6F75-17C3-4FFF-9C4C-17CBD99D0934}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -15,10 +15,14 @@ namespace React_TODOLIST
 
                 RegisterMVC(builder);
                 RegisterServices(builder);
-
+                RegisterModule(builder);
                 var container = builder.Build();
-
                 DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            }
+
+            private static void RegisterModule(ContainerBuilder builder)
+            {
+                throw new System.NotImplementedException();
             }
 
             private static void RegisterServices(ContainerBuilder builder)
