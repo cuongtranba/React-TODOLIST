@@ -33,6 +33,8 @@ namespace React_TODOLIST
                     .AsImplementedInterfaces();
             }
 
+
+
             //private static void RegisterDbFactory(ContainerBuilder builder)
             //{
             //    builder.RegisterAssemblyTypes(typeof(IDbFactory<>).Assembly).AsClosedTypesOf(typeof(IDbFactory<>)).InstancePerRequest();
