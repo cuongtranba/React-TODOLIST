@@ -1,6 +1,10 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Autofac;
+using Autofac.Core;
 using Autofac.Integration.Mvc;
 
 namespace React_TODOLIST
@@ -14,7 +18,6 @@ namespace React_TODOLIST
                 var builder = new ContainerBuilder();
 
                 RegisterMVC(builder);
-                RegisterServices(builder);
                 RegisterModule(builder);
                 var container = builder.Build();
                 DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
@@ -22,24 +25,17 @@ namespace React_TODOLIST
 
             private static void RegisterModule(ContainerBuilder builder)
             {
-                throw new System.NotImplementedException();
+                var assemblies = Assembly.Load(WebConfigurationManager.AppSettings["AutofacModuleAssemblyName"]);
+                var modules = assemblies.GetTypes()
+                              .Where(p => typeof(IModule).IsAssignableFrom(p)
+                                          && !p.IsAbstract)
+                              .Select(p => (IModule)Activator.CreateInstance(p));
+
+                foreach (var module in modules)
+                {
+                    builder.RegisterModule(module);
+                }
             }
-
-            private static void RegisterServices(ContainerBuilder builder)
-            {
-                var dataAccess = Assembly.GetExecutingAssembly();
-                builder.RegisterAssemblyTypes(dataAccess)
-                    .Where(t => t.Name.EndsWith("Service"))
-                    .AsImplementedInterfaces();
-            }
-
-
-
-            //private static void RegisterDbFactory(ContainerBuilder builder)
-            //{
-            //    builder.RegisterAssemblyTypes(typeof(IDbFactory<>).Assembly).AsClosedTypesOf(typeof(IDbFactory<>)).InstancePerRequest();
-            //}
-
             private static void RegisterMVC(ContainerBuilder builder)
             {
                 builder.RegisterControllers(typeof(MvcApplication).Assembly).PropertiesAutowired();
