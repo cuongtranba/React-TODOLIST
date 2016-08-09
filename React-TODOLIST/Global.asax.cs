@@ -9,6 +9,7 @@ namespace React_TODOLIST
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            IOCConfig.Register();
         }
     }
 }

@@ -175,10 +175,17 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServiceImplementations\3.ServiceImplementations.csproj">
-      <Project>{782ed31f-338c-4aff-90c8-ca80fd92b5c4}</Project>
-      <Name>3.ServiceImplementations</Name>
+    <ProjectReference Include="..\Domain\4.Domain.csproj">
+      <Project>{f6797b2b-d362-436e-bb6d-c7113874b1f6}</Project>
+      <Name>4.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServiceInterfaces\2.ServiceInterfaces.csproj">
+      <Project>{49dbef27-d2cb-4eb8-b8eb-0c788b942563}</Project>
+      <Name>2.ServiceInterfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
