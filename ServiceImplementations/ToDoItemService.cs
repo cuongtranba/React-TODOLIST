@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Domain.Model;
 using LiteDB;
 using ServiceInterfaces;
@@ -15,6 +17,10 @@ namespace ServiceImplementations
         {
             throw new System.NotImplementedException();
         }
-        
+
+        public List<ToDoItem> GetAllToDoItem()
+        {
+            return this.collection.FindAll().ToList();
+        }
     }
 }

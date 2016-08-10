@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Domain.Model;
 using ServiceInterfaces;
@@ -17,14 +18,7 @@ namespace React_TODOLIST.Controllers
 
         public ActionResult Index()
         {
-            var model=new ToDoItem()
-            {
-                CreateTime = DateTime.Now,
-                Description = "test01",
-                Name = "test01"
-            };
-            _toDoItemService.Insert(model);
-            return View();
+            return View(_toDoItemService.GetAllToDoItem());
         }
     }
 }

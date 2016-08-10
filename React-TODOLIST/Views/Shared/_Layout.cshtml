@@ -12,8 +12,11 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/react.min.js"></script>
+    <script src="~/scripts/react-dom.min.js"></script>
+    <script src="@Url.Content("~/Views/Home/Todo.jsx")"></script>
+    @Html.ReactInitJavaScript()
 </body>
 </html>

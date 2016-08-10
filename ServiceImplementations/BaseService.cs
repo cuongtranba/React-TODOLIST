@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Domain;
 using Domain.Model;
@@ -12,13 +14,14 @@ namespace ServiceImplementations
     /// </summary>
     /// <typeparam name="T"> entity type </typeparam>
     /// <typeparam name="V"> id type </typeparam>
-    public abstract class BaseService<T,V> where T:new()
+    public abstract class BaseService<T, V> where T : new()
     {
         private readonly LiteDatabase _liteDatabase;
-
+        protected LiteCollection<T> collection;
         protected BaseService(LiteDatabase liteDatabase)
         {
             _liteDatabase = liteDatabase;
+            collection = _liteDatabase.GetCollection<T>($"{typeof(T).Name.ToLower()}s");
         }
 
         public async Task InsertAsync(T entity)
@@ -26,9 +29,9 @@ namespace ServiceImplementations
             throw new NotImplementedException();
         }
 
-        public void Insert(T entity)
+        public void Insert(T entity, bool isActive = true)
         {
-            _liteDatabase.GetCollection<T>($"{typeof(T).Name.ToLower()}s").Insert(entity);
+            collection.Insert(entity);
         }
 
         public async Task UpdateAync(T entity)
@@ -51,9 +54,11 @@ namespace ServiceImplementations
             throw new NotImplementedException();
         }
 
-        public IQueryable<T> Get()
+
+
+        public IEnumerable<T> Get(Expression<Func<T, bool>> predicate, bool isActive = true)
         {
-            throw new NotImplementedException();
+            return collection.Find(predicate);
         }
 
         public IQueryable<T> GetAsync()
