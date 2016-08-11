@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Model;
@@ -6,7 +7,7 @@ using LiteDB;
 using ServiceInterfaces;
 namespace ServiceImplementations
 {
-    public class ToDoItemService: BaseService<ToDoItem, int>, IToDoItemService
+    public class ToDoItemService: BaseService<ToDoItem, Guid>, IToDoItemService
     {
         public ToDoItemService(LiteDatabase liteDatabase) : base(liteDatabase)
         {

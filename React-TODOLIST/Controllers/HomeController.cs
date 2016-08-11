@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Domain.Model;
 using ServiceInterfaces;
 
 namespace React_TODOLIST.Controllers
@@ -15,7 +16,15 @@ namespace React_TODOLIST.Controllers
 
         public ActionResult Index()
         {
+
             return View(_toDoItemService.GetAllToDoItem());
+        }
+
+        [HttpPost]
+        public ActionResult AddToDo(ToDoItem model)
+        {
+            _toDoItemService.Insert(model);
+            return Json(new { success = true, data = model });
         }
     }
 }

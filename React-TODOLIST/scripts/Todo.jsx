@@ -1,13 +1,23 @@
 ﻿var ToDoListSkeleton = React.createClass({
+    handleItemSubmit: function (item) {
+        var todolist = this.state.data;
+        var seft = this;
+        $.post(this.props.addTodoUrl, { Description: item },
+            function (data) {
+                if (data.success) {
+                    var newitems = todolist.concat(data.data);
+                    seft.setState({ data: newitems });
+                }
+            });
+    },
     getInitialState: function () {
-        console.log(this.props.initialData);
         return { data: this.props.initialData };
     },
     render: function () {
         return (
           <div className="row">
             <div className="col-md-6 todolist not-done">
-              <AddToDo></AddToDo>
+              <AddToDo onItemSubmit={this.handleItemSubmit}></AddToDo>
               <MaskAllDone></MaskAllDone>
               <ListItem data={this.state.data}></ListItem>
               <ItemsLeft data={this.state.data.length}></ItemsLeft>
@@ -48,11 +58,17 @@ var DoneItem = React.createClass({
 
 
 var AddToDo = React.createClass({
+    handleAddItem: function (event) {
+        if (event.key === "Enter") {
+            this.props.onItemSubmit(this.refs.Description.value.trim());
+            this.refs.Description.value = "";
+        }
+    },
     render: function () {
         return (
       <div>
         <h1>Todos</h1>
-        <input type="text" className="form-control add-todo" placeholder="Add todo" />
+        <input type="text" ref="Description" onKeyPress={this.handleAddItem} className="form-control add-todo" placeholder="Add todo" />
       </div>
     );
     }
@@ -81,7 +97,7 @@ var ListItem = React.createClass({
         });
         return (
       <ul id="sortable" className="list-unstyled">
-        {items}
+          {items}
       </ul>
     );
     }
