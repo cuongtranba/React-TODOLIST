@@ -13,7 +13,7 @@ namespace React_TODOLIST
             // your components as well as all of their dependencies.
             // See http://reactjs.net/ for more information. Example:
 		    ReactSiteConfiguration.Configuration
-		        .AddScript("~/Views/Home/Todo.jsx");
+		        .AddScript("~/scripts/Todo.jsx");
 
 		    // If you use an external build too (for example, Babel, Webpack,
 		    // Browserify or Gulp), you can improve performance by disabling 

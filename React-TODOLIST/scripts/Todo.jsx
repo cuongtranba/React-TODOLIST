@@ -1,12 +1,16 @@
 ﻿var ToDoListSkeleton = React.createClass({
-    render: function() {
+    getInitialState: function () {
+        console.log(this.props.initialData);
+        return { data: this.props.initialData };
+    },
+    render: function () {
         return (
           <div className="row">
             <div className="col-md-6 todolist not-done">
               <AddToDo></AddToDo>
               <MaskAllDone></MaskAllDone>
-              <ListItem></ListItem>
-              <ItemsLeft></ItemsLeft>
+              <ListItem data={this.state.data}></ListItem>
+              <ItemsLeft data={this.state.data.length}></ItemsLeft>
             </div>
             <AlreadyDone></AlreadyDone>
           </div>
@@ -28,7 +32,7 @@ var ToDoListNotDone = React.createClass({
 });
 
 var DoneItem = React.createClass({
-    render: function() {
+    render: function () {
         return (
           <div className="col-md-6">
             <div className="todolist">
@@ -64,29 +68,20 @@ var MaskAllDone = React.createClass({
 
 var ListItem = React.createClass({
     render: function () {
+        var items = this.props.data.map(function (item) {
+            return (
+            <li className="ui-state-default">
+              <div className="checkbox">
+                <label>
+                  <input type="checkbox" id={item.Id} defaultValue />{item.Description}
+                </label>
+              </div>
+            </li>
+            );
+        });
         return (
       <ul id="sortable" className="list-unstyled">
-        <li className="ui-state-default">
-          <div className="checkbox">
-            <label>
-              <input type="checkbox" defaultValue />Take out the trash
-            </label>
-          </div>
-        </li>
-        <li className="ui-state-default">
-          <div className="checkbox">
-            <label>
-              <input type="checkbox" defaultValue />Buy bread
-            </label>
-          </div>
-        </li>
-        <li className="ui-state-default">
-          <div className="checkbox">
-            <label>
-              <input type="checkbox" defaultValue />Teach penguins to fly
-            </label>
-          </div>
-        </li>
+        {items}
       </ul>
     );
     }
@@ -109,10 +104,10 @@ var AlreadyDone = React.createClass({
 });
 
 var ItemsLeft = React.createClass({
-    render: function() {
+    render: function () {
         return (
           <div className="todo-footer">
-            <strong><span className="count-todos" /></strong> Items Left
+            <strong><span className="count-todos" /></strong>{this.props.data} Items Left
           </div>
       );
     }

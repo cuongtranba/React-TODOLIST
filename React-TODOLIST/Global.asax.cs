@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace React_TODOLIST
@@ -10,6 +11,8 @@ namespace React_TODOLIST
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             IOCConfig.Register();
+            ReactConfig.Configure();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

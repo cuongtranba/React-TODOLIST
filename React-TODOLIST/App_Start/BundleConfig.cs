@@ -9,12 +9,9 @@ namespace React_TODOLIST
         public static void RegisterBundles(BundleCollection bundles)
         {
 
-            //bundles.Add(new BabelBundle("~/bundles/main").Include(
-            //    "~/Views/Home/Todo.jsx",
-            //    "~/Views/Home/Todo.jsx",
-            //    "~/Views/Home/Todo.jsx",
-            //    "~/Views/Home/Todo.jsx"
-            //));
+            bundles.Add(new BabelBundle("~/bundles/main").Include(
+                "~/scripts/Todo.jsx"
+            ));
 
             // Forces files to be combined and minified in debug mode
             // Only used here to demonstrate how combination/minification works

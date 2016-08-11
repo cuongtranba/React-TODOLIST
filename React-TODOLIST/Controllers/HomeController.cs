@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Web.Mvc;
-using Domain.Model;
+﻿using System.Web.Mvc;
 using ServiceInterfaces;
 
 namespace React_TODOLIST.Controllers
