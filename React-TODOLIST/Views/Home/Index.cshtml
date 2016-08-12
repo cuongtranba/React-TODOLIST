@@ -6,5 +6,6 @@
 @Html.React("ToDoListSkeleton", new
 {
     initialData = Model,
-    addTodoUrl=Url.Action("AddToDo")
+    addTodoUrl=Url.Action("AddToDo"),
+    markAllDoneUrl=Url.Action("MarkAllDone")
 })

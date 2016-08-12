@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using Domain.Model;
 using ServiceInterfaces;
 
@@ -16,7 +18,6 @@ namespace React_TODOLIST.Controllers
 
         public ActionResult Index()
         {
-
             return View(_toDoItemService.GetAllToDoItem());
         }
 
@@ -25,6 +26,13 @@ namespace React_TODOLIST.Controllers
         {
             _toDoItemService.Insert(model);
             return Json(new { success = true, data = model });
+        }
+
+        [HttpPost]
+        public ActionResult MarkAllDone(List<Guid> guids)
+        {
+            //_toDoItemService.MarkAllDone(guids);
+            return Json(new { success = true });
         }
     }
 }

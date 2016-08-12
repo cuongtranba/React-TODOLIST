@@ -9,5 +9,6 @@ namespace ServiceInterfaces
     {
         Task InsertAsyncToDoItem(ToDoItem toDoItem);
         List<ToDoItem> GetAllToDoItem();
+        void MarkAllDone(List<Guid> guids);
     }
 }

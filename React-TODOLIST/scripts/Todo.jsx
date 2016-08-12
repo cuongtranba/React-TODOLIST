@@ -10,19 +10,40 @@
                 }
             });
     },
+
+    handleItemAllDone: function () {
+        var seft = this;
+        var itemGuidsDone = this.state.doneItem.map(item=>item.Id);
+        console.log(this.state.data);
+        console.log(this.state.doneItem);
+        console.log(itemGuidsDone);
+        console.log(JSON.stringify({ guids: itemGuidsDone }));
+        $.post(this.props.markAllDoneUrl, JSON.stringify({ guids: itemGuidsDone }),
+            function (data) {
+                if (data.success) {
+                    var itemActive = seft.state.data.forEach(function (item) {
+                        if (itemGuidsDone.indexOf(item.Id) > 0) {
+                            item.IsActive = false;
+                        }
+                    });
+                    seft.setState({ data: itemActive });
+                }
+            });
+    },
+
     getInitialState: function () {
-        return { data: this.props.initialData };
+        return { data: this.props.initialData, doneItem: this.props.initialData };
     },
     render: function () {
         return (
           <div className="row">
             <div className="col-md-6 todolist not-done">
               <AddToDo onItemSubmit={this.handleItemSubmit}></AddToDo>
-              <MaskAllDone></MaskAllDone>
+              <MaskAllDone onItemDone={this.handleItemAllDone}></MaskAllDone>
               <ListItem data={this.state.data}></ListItem>
               <ItemsLeft data={this.state.data.length}></ItemsLeft>
             </div>
-            <AlreadyDone></AlreadyDone>
+            <AlreadyDone data={this.state.doneItem}></AlreadyDone>
           </div>
       );
     }
@@ -75,9 +96,12 @@ var AddToDo = React.createClass({
 });
 
 var MaskAllDone = React.createClass({
+    HandleDoneItem: function () {
+        this.props.onItemDone();
+    },
     render: function () {
         return (
-            <button id="checkAll" className="btn btn-success">Mark all as done</button>
+            <button id="checkAll" onClick={this.HandleDoneItem} className="btn btn-success">Mark all as done</button>
     );
     }
 });
@@ -106,12 +130,21 @@ var ListItem = React.createClass({
 
 var AlreadyDone = React.createClass({
     render: function () {
+        var doneItem = this.props.data.map(function (item) {
+            return (
+                <li>
+                    {item.Description} <button id={item.id} className="remove-item btn btn-default btn-xs pull-right">
+                <span className="glyphicon glyphicon-remove" />
+                    </button>
+                </li>
+            );
+        });
         return (
           <div className="col-md-6">
             <div className="todolist">
               <h1>Already Done</h1>
               <ul id="done-items" className="list-unstyled">
-                <li>Some item <button className="remove-item btn btn-default btn-xs pull-right"><span className="glyphicon glyphicon-remove" /></button></li>
+                  {doneItem}
               </ul>
             </div>
           </div>
