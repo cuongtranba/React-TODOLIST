@@ -13,54 +13,55 @@
 
     handleItemAllDone: function () {
         var seft = this;
-        var itemGuidsDone = this.state.doneItem.map(item=>item.Id);
-        console.log(this.state.data);
-        console.log(this.state.doneItem);
-        console.log(itemGuidsDone);
-        console.log(JSON.stringify({ guids: itemGuidsDone }));
-        $.post(this.props.markAllDoneUrl, JSON.stringify({ guids: itemGuidsDone }),
-            function (data) {
-                if (data.success) {
-                    var itemActive = seft.state.data.forEach(function (item) {
-                        if (itemGuidsDone.indexOf(item.Id) > 0) {
-                            item.IsActive = false;
-                        }
-                    });
-                    seft.setState({ data: itemActive });
-                }
-            });
+        $.post(this.props.markAllDoneUrl, function (data) {
+            if (data.success) {
+                var newDoneItems = seft.state.doneItem.concat(seft.state.data)
+                seft.setState({ doneItem: newDoneItems, data: [] });
+            }
+        });
+    },
+
+    handleDoneItem: function (todoId) {
+        var itemDone = this.state.data.filter(c=>c.Id == todoId);
+        var newData = this.state.data.filter(c=>c.Id !== todoId);
+        $.post(this.props.markItemDone, { id: todoId }, function (data) {
+            if (data.success) {
+                var newDoneItems = this.state.doneItem.concat(itemDone);
+                this.setState({ data: newData, doneItem: newDoneItems });
+            }
+        }.bind(this));
+    },
+
+    handleDeleteItem: function (todoId) {
+        console.log(todoId);
+        $.post(this.props.deleteItemUrl, { id: todoId }, function (data) {
+            if (data.success) {
+                this.setState({ doneItem: this.state.doneItem.filter(c=>c.Id != todoId) });
+            }
+        }.bind(this))
     },
 
     getInitialState: function () {
-        return { data: this.props.initialData, doneItem: this.props.initialData };
+        return {
+            data: this.props.initialData.filter(c=>c.IsActive),
+            doneItem: this.props.initialData.filter(c=>c.IsActive == false)
+        };
     },
     render: function () {
         return (
           <div className="row">
             <div className="col-md-6 todolist not-done">
               <AddToDo onItemSubmit={this.handleItemSubmit}></AddToDo>
-              <MaskAllDone onItemDone={this.handleItemAllDone}></MaskAllDone>
-              <ListItem data={this.state.data}></ListItem>
+              <MaskAllDone onItemDoneAll={this.handleItemAllDone}></MaskAllDone>
+              <ListItem onItemDone={this.handleDoneItem} data={this.state.data}></ListItem>
               <ItemsLeft data={this.state.data.length}></ItemsLeft>
             </div>
-            <AlreadyDone data={this.state.doneItem}></AlreadyDone>
+            <AlreadyDone onItemDelete={this.handleDeleteItem} data={this.state.doneItem}></AlreadyDone>
           </div>
       );
     }
 });
 
-var ToDoListNotDone = React.createClass({
-    render: function () {
-        return (
-          <div>
-            <h1>To Do</h1>
-            <AddToDo></AddToDo>
-            <MaskAllDone></MaskAllDone>
-            <ListItem></ListItem>
-          </div>
-    );
-    }
-});
 
 var DoneItem = React.createClass({
     render: function () {
@@ -96,24 +97,30 @@ var AddToDo = React.createClass({
 });
 
 var MaskAllDone = React.createClass({
-    HandleDoneItem: function () {
-        this.props.onItemDone();
+    HandleDoneAllItem: function () {
+        this.props.onItemDoneAll();
     },
     render: function () {
         return (
-            <button id="checkAll" onClick={this.HandleDoneItem} className="btn btn-success">Mark all as done</button>
+            <button id="checkAll" onClick={this.HandleDoneAllItem} className="btn btn-success">Mark all as done</button>
     );
     }
 });
 
 var ListItem = React.createClass({
+    handleDoneItem: function (event) {
+        var itemId = event.target.getAttribute('data-id');
+        this.props.onItemDone(itemId);
+        event.target.checked = false;
+    },
     render: function () {
+        var seft = this;
         var items = this.props.data.map(function (item) {
             return (
             <li className="ui-state-default">
               <div className="checkbox">
                 <label>
-                  <input type="checkbox" id={item.Id} defaultValue />{item.Description}
+                  <input onClick={seft.handleDoneItem} type="checkbox" data-id={item.Id} defaultValue />{item.Description}
                 </label>
               </div>
             </li>
@@ -129,16 +136,20 @@ var ListItem = React.createClass({
 
 
 var AlreadyDone = React.createClass({
+    handleDeleteItem: function (event) {
+        console.log(event)
+        this.props.onItemDelete(event.currentTarget.getAttribute("data-id"))
+    },
     render: function () {
         var doneItem = this.props.data.map(function (item) {
             return (
                 <li>
-                    {item.Description} <button id={item.id} className="remove-item btn btn-default btn-xs pull-right">
+                    {item.Description} <button onClick={this.handleDeleteItem} data-id={item.Id} className="remove-item btn btn-default btn-xs pull-right">
                 <span className="glyphicon glyphicon-remove" />
                     </button>
                 </li>
             );
-        });
+        }.bind(this));
         return (
           <div className="col-md-6">
             <div className="todolist">

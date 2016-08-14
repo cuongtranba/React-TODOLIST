@@ -12,6 +12,7 @@ namespace Domain.Model
         public ToDoItem()
         {
             this.Id = Guid.NewGuid();
+            IsActive = true;
         }
     }
 }

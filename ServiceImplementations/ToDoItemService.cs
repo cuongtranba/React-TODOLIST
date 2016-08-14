@@ -24,13 +24,9 @@ namespace ServiceImplementations
             return this.collection.FindAll().ToList();
         }
 
-        public void MarkAllDone(List<Guid> guids)
+        public void MarkAllDone()
         {
-            if (guids == null || !guids.Any())
-            {
-                return;
-            }
-            var allItems = this.collection.Find(c => c.IsActive && guids.Contains(c.Id)).ToList();
+            var allItems = this.collection.Find(c => c.IsActive).ToList();
             if (allItems.Any())
             {
                 foreach (var toDoItem in allItems)
@@ -38,6 +34,16 @@ namespace ServiceImplementations
                     toDoItem.IsActive = false;
                 }
                 this.collection.Update(allItems);
+            }
+        }
+
+        public void MarkTodoDone(Guid id)
+        {
+            var item = this.collection.FindOne(c => c.Id == id);
+            if (item != null)
+            {
+                item.IsActive = false;
+                this.collection.Update(item);
             }
         }
     }

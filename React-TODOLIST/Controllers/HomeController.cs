@@ -9,7 +9,7 @@ namespace React_TODOLIST.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        private IToDoItemService _toDoItemService;
+        private readonly IToDoItemService _toDoItemService;
 
         public HomeController(IToDoItemService toDoItemService)
         {
@@ -29,9 +29,23 @@ namespace React_TODOLIST.Controllers
         }
 
         [HttpPost]
-        public ActionResult MarkAllDone(List<Guid> guids)
+        public ActionResult MarkAllDone()
         {
-            //_toDoItemService.MarkAllDone(guids);
+            _toDoItemService.MarkAllDone();
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public ActionResult MarkTodoDone(Guid id)
+        {
+            _toDoItemService.MarkTodoDone(id);
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteItem(Guid id)
+        {
+            _toDoItemService.Delete(id);
             return Json(new { success = true });
         }
     }

@@ -51,10 +51,8 @@ namespace ServiceImplementations
 
         public void Delete(V id)
         {
-            throw new NotImplementedException();
+            this.collection.Delete(new BsonValue(id));
         }
-
-
 
         public IEnumerable<T> Get(Expression<Func<T, bool>> predicate, bool isActive = true)
         {
