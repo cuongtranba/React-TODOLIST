@@ -1,0 +1,16 @@
+{
+  "name": "React-TODOLIST",
+  "homepage": "https://github.com/cuongtranba/React-TODOLIST",
+  "authors": [
+    "cuongtranba <bacuongtr@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "react": "^15.3.0",
+    "jquery": "^3.1.0"
+  }
+}

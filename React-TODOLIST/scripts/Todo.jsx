@@ -33,7 +33,6 @@
     },
 
     handleDeleteItem: function (todoId) {
-        console.log(todoId);
         $.post(this.props.deleteItemUrl, { id: todoId }, function (data) {
             if (data.success) {
                 this.setState({ doneItem: this.state.doneItem.filter(c=>c.Id != todoId) });

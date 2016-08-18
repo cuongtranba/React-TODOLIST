@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using Domain.Model;
 using ServiceInterfaces;
@@ -8,7 +7,6 @@ namespace React_TODOLIST.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         private readonly IToDoItemService _toDoItemService;
 
         public HomeController(IToDoItemService toDoItemService)
