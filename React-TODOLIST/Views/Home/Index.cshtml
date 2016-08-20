@@ -11,3 +11,9 @@
     markItemDone=Url.Action("MarkTodoDone"),
     deleteItemUrl=Url.Action("DeleteItem")
 })
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Description @item.CreateTime</li>
+    }
+</ul>

@@ -13,6 +13,7 @@ namespace Domain.Model
         {
             this.Id = Guid.NewGuid();
             IsActive = true;
+            CreateTime = DateTime.Now;
         }
     }
 }

@@ -53,6 +53,10 @@
       <Project>{f6797b2b-d362-436e-bb6d-c7113874b1f6}</Project>
       <Name>4.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj">
+      <Project>{36829BE8-7D8F-4FFB-8086-61B53597424E}</Project>
+      <Name>HelperLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceInterfaces\2.ServiceInterfaces.csproj">
       <Project>{49dbef27-d2cb-4eb8-b8eb-0c788b942563}</Project>
       <Name>2.ServiceInterfaces</Name>

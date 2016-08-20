@@ -87,7 +87,7 @@ var AddToDo = React.createClass({
     },
     render: function () {
         return (
-      <div>
+      <div className="row">
         <h1>Todos</h1>
         <input type="text" ref="Description" onKeyPress={this.handleAddItem} className="form-control add-todo" placeholder="Add todo" />
       </div>
@@ -101,7 +101,9 @@ var MaskAllDone = React.createClass({
     },
     render: function () {
         return (
-            <button id="checkAll" onClick={this.HandleDoneAllItem} className="btn btn-success">Mark all as done</button>
+            <div className="row">
+                <button id="checkAll" onClick={this.HandleDoneAllItem} className="btn btn-success">Mark all as done</button>
+            </div>
     );
     }
 });
@@ -126,9 +128,10 @@ var ListItem = React.createClass({
             );
         });
         return (
-      <ul id="sortable" className="list-unstyled">
-          {items}
-      </ul>
+            <div className="row">
+                <ul id="sortable" className="list-unstyled">{items}
+                </ul>
+            </div>
     );
     }
 });
@@ -136,7 +139,6 @@ var ListItem = React.createClass({
 
 var AlreadyDone = React.createClass({
     handleDeleteItem: function (event) {
-        console.log(event)
         this.props.onItemDelete(event.currentTarget.getAttribute("data-id"))
     },
     render: function () {
@@ -165,7 +167,7 @@ var AlreadyDone = React.createClass({
 var ItemsLeft = React.createClass({
     render: function () {
         return (
-          <div className="todo-footer">
+          <div className="row todo-footer">
             <strong><span className="count-todos" /></strong>{this.props.data} Items Left
           </div>
       );

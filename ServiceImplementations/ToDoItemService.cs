@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Domain.Model;
 using LiteDB;
 using ServiceInterfaces;
+
 namespace ServiceImplementations
 {
     public class ToDoItemService : BaseService<ToDoItem, Guid>, IToDoItemService
@@ -16,12 +17,13 @@ namespace ServiceImplementations
 
         public async Task InsertAsyncToDoItem(ToDoItem toDoItem)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public List<ToDoItem> GetAllToDoItem()
         {
-            return this.collection.FindAll().ToList();
+            var model = this.collection.FindAll().OrderByDescending(c => c.CreateTime.Date).ThenBy(c => c.CreateTime.TimeOfDay).ToList();
+            return model;
         }
 
         public void MarkAllDone()
