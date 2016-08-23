@@ -100,6 +100,7 @@
     <Compile Include="Jobs\HelloJob.cs" />
     <Compile Include="IOCConfig.cs" />
     <Compile Include="Jobs\IQuartzScheduler.cs" />
+    <Compile Include="Jobs\JobExecuted.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

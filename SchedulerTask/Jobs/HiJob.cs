@@ -13,15 +13,15 @@ namespace SchedulerTask.Jobs
 
         public IJobDetail GetJobDetail()
         {
-            return JobBuilder.Create<HelloJob>()
-                    .WithIdentity("Hello_job2", "group1")
+            return JobBuilder.Create<HiJob>()
+                    .WithIdentity("hi_job2", "group1")
                     .Build();
         }
 
         public ITrigger GetJobTrigger()
         {
             return TriggerBuilder.Create()
-                .WithIdentity("hello_trigger2", "group1")
+                .WithIdentity("hi_trigger2", "group1")
                 .StartNow()
                 .WithCronSchedule(App.Default.CronScheduleExpriredItem)
                 .Build();
