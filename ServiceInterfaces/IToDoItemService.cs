@@ -7,7 +7,6 @@ namespace ServiceInterfaces
 {
     public interface IToDoItemService:IService<ToDoItem,Guid>
     {
-        Task InsertAsyncToDoItem(ToDoItem toDoItem);
         List<ToDoItem> GetAllToDoItem();
         void MarkAllDone();
         void MarkTodoDone(Guid id);

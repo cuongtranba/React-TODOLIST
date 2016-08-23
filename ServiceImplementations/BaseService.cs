@@ -23,31 +23,18 @@ namespace ServiceImplementations
             _liteDatabase = liteDatabase;
             collection = _liteDatabase.GetCollection<T>($"{typeof(T).Name.ToLower()}s");
         }
-
-        public async Task InsertAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
+   
         public void Insert(T entity, bool isActive = true)
         {
             collection.Insert(entity);
         }
-
-        public async Task UpdateAync(T entity)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void Update(T entity)
         {
             throw new NotImplementedException();
         }
 
-        public async Task DeleteAsync(V id)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Delete(V id)
         {

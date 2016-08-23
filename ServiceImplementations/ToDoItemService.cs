@@ -11,15 +11,9 @@ namespace ServiceImplementations
 {
     public class ToDoItemService : BaseService<ToDoItem, Guid>, IToDoItemService
     {
-        private ITestService _testService;
-        public ToDoItemService(LiteDatabase liteDatabase, ITestService testService) : base(liteDatabase)
+        public ToDoItemService(LiteDatabase liteDatabase) : base(liteDatabase)
         {
-            _testService = testService;
-        }
 
-        public async Task InsertAsyncToDoItem(ToDoItem toDoItem)
-        {
-            throw new NotImplementedException();
         }
 
         public List<ToDoItem> GetAllToDoItem()

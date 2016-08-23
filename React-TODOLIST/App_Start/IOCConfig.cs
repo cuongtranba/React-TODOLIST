@@ -24,15 +24,8 @@ namespace React_TODOLIST
         private static void RegisterModule(ContainerBuilder builder)
         {
             var assemblies = Assembly.LoadFile($"{AppDomain.CurrentDomain.BaseDirectory}..\\AutofacModule\\bin\\debug\\AutofacModule.dll");
-            var modules = assemblies.GetTypes()
-                          .Where(p => typeof(IModule).IsAssignableFrom(p)
-                                      && !p.IsAbstract)
-                          .Select(p => (IModule)Activator.CreateInstance(p));
+            builder.RegisterAssemblyModules(assemblies);
 
-            foreach (var module in modules)
-            {
-                builder.RegisterModule(module);
-            }
         }
         private static void RegisterMVC(ContainerBuilder builder)
         {
