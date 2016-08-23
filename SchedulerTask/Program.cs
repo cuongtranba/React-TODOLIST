@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using Quartz;
+using SchedulerTask.Jobs;
 
 namespace SchedulerTask
 {
@@ -13,10 +14,8 @@ namespace SchedulerTask
             {
                 Container = IOCConfig.Register();
                 Common.Logging.LogManager.Adapter = new Common.Logging.Simple.ConsoleOutLoggerFactoryAdapter { Level = Common.Logging.LogLevel.Info };
-                var scheduler = Container.Resolve<IScheduler>();
-                var jobs = Container.Resolve<IJob>();
-                
-
+                var runjob = Container.Resolve<JobExecuted>();
+                runjob.RunJobs();
             }
             catch (SchedulerException se)
             {

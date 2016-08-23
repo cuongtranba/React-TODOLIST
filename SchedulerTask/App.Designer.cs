@@ -34,7 +34,7 @@ namespace SchedulerTask {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0 0/5 * * * ?\r\n")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0/2 * * * * ?")]
         public string CronScheduleExpriredItem {
             get {
                 return ((string)(this["CronScheduleExpriredItem"]));

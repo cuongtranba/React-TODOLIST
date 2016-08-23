@@ -6,8 +6,7 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="CronScheduleExpriredItem" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">0 0/5 * * * ?
-</Value>
+      <Value Profile="(Default)">0/2 * * * * ?</Value>
     </Setting>
   </Settings>
 </SettingsFile>

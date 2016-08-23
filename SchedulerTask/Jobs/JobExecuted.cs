@@ -5,9 +5,9 @@ namespace SchedulerTask.Jobs
 {
     public class JobExecuted
     {
-        private readonly List<IQuartzScheduler> quartzSchedulers;
+        private readonly IEnumerable<IQuartzScheduler> quartzSchedulers;
         private IScheduler scheduler;
-        public JobExecuted(List<IQuartzScheduler> quartzSchedulers, IScheduler scheduler)
+        public JobExecuted(IEnumerable<IQuartzScheduler> quartzSchedulers, IScheduler scheduler)
         {
             this.quartzSchedulers = quartzSchedulers;
             this.scheduler = scheduler;
@@ -15,6 +15,7 @@ namespace SchedulerTask.Jobs
 
         public void RunJobs()
         {
+            scheduler.Start();
             foreach (var quartzScheduler in quartzSchedulers)
             {
                 scheduler.ScheduleJob(quartzScheduler.GetJobDetail(),quartzScheduler.GetJobTrigger());
