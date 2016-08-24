@@ -56,7 +56,7 @@ namespace ServiceImplementations
                     var value = activeItem.CreateTime.AddSeconds(expiredTime);
                     if (value <= DateTime.Now)
                     {
-                        activeItem.IsActive = false;
+                        activeItem.IsExpired = true;
                         updateItems.Add(activeItem);
                     }
                 }

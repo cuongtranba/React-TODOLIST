@@ -96,6 +96,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>App.settings</DependentUpon>
     </Compile>
+    <Compile Include="Jobs\ExpiredTaskJob.cs" />
     <Compile Include="Jobs\HiJob.cs" />
     <Compile Include="Jobs\HelloJob.cs" />
     <Compile Include="IOCConfig.cs" />

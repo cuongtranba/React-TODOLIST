@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
 using Autofac.Extras.Quartz;
@@ -14,8 +15,15 @@ namespace SchedulerTask
             var builder = new ContainerBuilder();
             //RegisterModule(builder);
             RegisterJob(builder);
+            RegisterModule(builder);
             var container = builder.Build();
             return container;
+        }
+
+        private static void RegisterModule(ContainerBuilder builder)
+        {
+            var assemblies = Assembly.LoadFile($"{AppDomain.CurrentDomain.BaseDirectory}..\\..\\..\\AutofacModule\\bin\\debug\\AutofacModule.dll");
+            builder.RegisterAssemblyModules(assemblies);
         }
 
         private static void RegisterJob(ContainerBuilder builder)

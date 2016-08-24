@@ -40,5 +40,26 @@ namespace SchedulerTask {
                 return ((string)(this["CronScheduleExpriredItem"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ExpiredTaskJob")]
+        public string ExpiredTaskJob {
+            get {
+                return ((string)(this["ExpiredTaskJob"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("TriggerExpiredTaskJob")]
+        public string TriggerExpiredTaskJob {
+            get {
+                return ((string)(this["TriggerExpiredTaskJob"]));
+            }
+            set {
+                this["TriggerExpiredTaskJob"] = value;
+            }
+        }
     }
 }

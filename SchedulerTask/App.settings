@@ -8,5 +8,11 @@
     <Setting Name="CronScheduleExpriredItem" Type="System.String" Scope="Application">
       <Value Profile="(Default)">0/2 * * * * ?</Value>
     </Setting>
+    <Setting Name="ExpiredTaskJob" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ExpiredTaskJob</Value>
+    </Setting>
+    <Setting Name="TriggerExpiredTaskJob" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TriggerExpiredTaskJob</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
