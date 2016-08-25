@@ -18,7 +18,7 @@ namespace ServiceImplementations
 
         public List<ToDoItem> GetAllToDoItem()
         {
-            var model = this.collection.FindAll().OrderByDescending(c => c.CreateTime.Date).ThenBy(c => c.CreateTime.TimeOfDay).ToList();
+            var model = this.collection.Find(c=>c.IsExpired==false).OrderByDescending(c => c.CreateTime.Date).ThenBy(c => c.CreateTime.TimeOfDay).ToList();
             return model;
         }
 
@@ -48,7 +48,7 @@ namespace ServiceImplementations
         public void DeActiveTaskWhenExpired(int expiredTime)
         {
             var activeItems = this.collection.Find(c => c.IsActive).ToList();
-            var updateItems=new List<ToDoItem>();
+            var updateItems = new List<ToDoItem>();
             if (activeItems.Any())
             {
                 foreach (var activeItem in activeItems)
@@ -65,6 +65,11 @@ namespace ServiceImplementations
             {
                 this.collection.Update(updateItems);
             }
+        }
+
+        public List<ToDoItem> GetExpiredItems()
+        {
+            return this.collection.Find(c => c.IsExpired == false).ToList();
         }
     }
 }

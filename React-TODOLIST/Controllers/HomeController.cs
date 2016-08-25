@@ -21,6 +21,12 @@ namespace React_TODOLIST.Controllers
         }
 
         [HttpPost]
+        public ActionResult ExpiredItems()
+        {
+            return Json(_toDoItemService.GetExpiredItems());
+        }
+
+        [HttpPost]
         public ActionResult AddToDo(ToDoItem model)
         {
             _toDoItemService.Insert(model);

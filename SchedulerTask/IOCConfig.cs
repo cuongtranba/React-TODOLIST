@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using Autofac;
 using Autofac.Extras.Quartz;
+using LiteDB;
 using Quartz;
 using SchedulerTask.Jobs;
 
@@ -13,17 +15,30 @@ namespace SchedulerTask
         public static IContainer Register()
         {
             var builder = new ContainerBuilder();
-            //RegisterModule(builder);
             RegisterJob(builder);
             RegisterModule(builder);
+            RegisteLiteDb(builder);
             var container = builder.Build();
             return container;
         }
 
+        private static void RegisteLiteDb(ContainerBuilder builder)
+        {
+            var dbpath = $"{AppDomain.CurrentDomain.BaseDirectory}..\\..\\..\\LiteDb\\TodoDb.db";
+            var haveFile = File.Exists(dbpath);
+            if (haveFile)
+            {
+                var dblite = new LiteDatabase(dbpath);
+                builder.Register(c => dblite).AsSelf();
+            }
+        }
+
         private static void RegisterModule(ContainerBuilder builder)
         {
-            var assemblies = Assembly.LoadFile($"{AppDomain.CurrentDomain.BaseDirectory}..\\..\\..\\AutofacModule\\bin\\debug\\AutofacModule.dll");
-            builder.RegisterAssemblyModules(assemblies);
+            var assemblies = Assembly.LoadFile($"{AppDomain.CurrentDomain.BaseDirectory}..\\..\\..\\ServiceImplementations\\bin\\debug\\ServiceImplementations.dll");
+            builder.RegisterAssemblyTypes(assemblies)
+                .Where(t => t.Name.EndsWith("Service"))
+                .AsImplementedInterfaces();
         }
 
         private static void RegisterJob(ContainerBuilder builder)

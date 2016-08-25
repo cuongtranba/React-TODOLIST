@@ -3,6 +3,7 @@ using ServiceInterfaces;
 
 namespace SchedulerTask.Jobs
 {
+    [DisallowConcurrentExecution]
     public class ExpiredTaskJob:IJob, IQuartzScheduler
     {
         private IToDoItemService itemService;

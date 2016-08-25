@@ -11,5 +11,6 @@ namespace ServiceInterfaces
         void MarkAllDone();
         void MarkTodoDone(Guid id);
         void DeActiveTaskWhenExpired(int expiredTime);
+        List<ToDoItem> GetExpiredItems();
     }
 }

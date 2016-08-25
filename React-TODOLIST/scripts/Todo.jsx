@@ -3,7 +3,8 @@
         super(props);
         this.state = {
             data: this.props.initialData.filter(c=>c.IsActive),
-            doneItem: this.props.initialData.filter(c=>c.IsActive == false)
+            doneItem: this.props.initialData.filter(c=>c.IsActive === false),
+            expireItems: this.props.initialData.filter(c=>c.IsExpired === true)
         }
     }
     handleItemSubmit(item) {
@@ -21,13 +22,13 @@
         var seft = this;
         $.post(this.props.markAllDoneUrl, function (data) {
             if (data.success) {
-                var newDoneItems = seft.state.doneItem.concat(seft.state.data)
+                var newDoneItems = seft.state.doneItem.concat(seft.state.data);
                 seft.setState({ doneItem: newDoneItems, data: [] });
             }
         });
     }
     handleDoneItem(todoId) {
-        var itemDone = this.state.data.filter(c=>c.Id == todoId);
+        var itemDone = this.state.data.filter(c=>c.Id === todoId);
         var newData = this.state.data.filter(c=>c.Id !== todoId);
         $.post(this.props.markItemDone, { id: todoId }, function (data) {
             if (data.success) {
@@ -37,27 +38,58 @@
         }.bind(this));
     }
     handleDeleteItem(todoId) {
-        $.post(this.props.deleteItemUrl, { id: todoId }, function (data) {
-            if (data.success) {
-                this.setState({ doneItem: this.state.doneItem.filter(c=>c.Id != todoId) });
-            }
-        }.bind(this))
+        $.post(this.props.deleteItemUrl,
+            { id: todoId },
+            function (data) {
+                if (data.success) {
+                    this.setState({ doneItem: this.state.doneItem.filter(c => c.Id !== todoId) });
+                }
+            }.bind(this));
     }
     render() {
         return (
-          <div className="row">
-            <div className="col-md-6 todolist not-done">
-              <AddToDo onItemSubmit={this.handleItemSubmit.bind(this)}></AddToDo>
-              <MaskAllDone onItemDoneAll={this.handleItemAllDone.bind(this)}></MaskAllDone>
-              <ListItem onItemDone={this.handleDoneItem.bind(this)} data={this.state.data}></ListItem>
-              <ItemsLeft data={this.state.data.length}></ItemsLeft>
+            <div>
+                <div className="row">
+                    <div className="col-md-6 todolist not-done">
+                      <AddToDo onItemSubmit={this.handleItemSubmit.bind(this)}></AddToDo>
+                      <MaskAllDone onItemDoneAll={this.handleItemAllDone.bind(this)}></MaskAllDone>
+                      <ListItem onItemDone={this.handleDoneItem.bind(this)} data={this.state.data}></ListItem>
+                      <ItemsLeft data={this.state.data.length}></ItemsLeft>
+                    </div>
+                    <AlreadyDone onItemDelete={this.handleDeleteItem.bind(this)} data={this.state.doneItem}></AlreadyDone>
+                </div>
+                <div className="row">
+                    <ExpireItem data={this.state.expireItems}></ExpireItem>
+                </div>
             </div>
-            <AlreadyDone onItemDelete={this.handleDeleteItem.bind(this)} data={this.state.doneItem}></AlreadyDone>
-          </div>
+
       );
     }
 }
 
+class ExpireItem extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        var items = this.props.data.map(function (item) {
+            return (
+            <li className="ui-state-default">
+              <div className="checkbox">
+                <label>
+                  <input type="checkbox" data-id={item.Id} defaultValue />{item.Description}
+                </label>
+              </div>
+            </li>
+            );
+        });
+        return (
+            <ul id="sortable" className="list-unstyled">
+                {items}
+            </ul>
+     );
+    }
+}
 
 class DoneItem extends React.Component {
     constructor(props) {
@@ -97,7 +129,7 @@ class AddToDo extends React.Component {
     }
 }
 
-class MaskAllDone  extends React.Component {
+class MaskAllDone extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -107,9 +139,12 @@ class MaskAllDone  extends React.Component {
     render() {
         return (
             <div className="row">
-                <button id="checkAll" onClick={this.HandleDoneAllItem.bind(this)} className="btn btn-success">Mark all as done</button>
+                <button id="checkAll" onClick={this.HandleDoneAllItem
+                .bind(this)} className="btn btn-success">
+                    Mark all as done
+                </button>
             </div>
-    )
+        );
     }
 }
 
@@ -161,7 +196,7 @@ class AlreadyDone extends React.Component {
                     </button>
                 </li>
             );
-    }.bind(this));
+        }.bind(this));
         return (
           <div className="col-md-6">
             <div className="todolist">
