@@ -2,7 +2,7 @@
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.initialData.filter(c=>c.IsActive),
+            data: this.props.initialData.filter(c=>c.IsActive && c.IsExpired === false),
             doneItem: this.props.initialData.filter(c=>c.IsActive === false),
             expireItems: this.props.initialData.filter(c=>c.IsExpired === true)
         }
@@ -42,7 +42,9 @@
             { id: todoId },
             function (data) {
                 if (data.success) {
-                    this.setState({ doneItem: this.state.doneItem.filter(c => c.Id !== todoId) });
+                    this.setState({
+                        doneItem: this.state.doneItem.filter(c => c.Id !== todoId), expireItems: this.state.expireItems.filter(c => c.Id !== todoId)
+                    });
                 }
             }.bind(this));
     }
@@ -58,8 +60,10 @@
                     </div>
                     <AlreadyDone onItemDelete={this.handleDeleteItem.bind(this)} data={this.state.doneItem}></AlreadyDone>
                 </div>
-                <div className="row">
-                    <ExpireItem data={this.state.expireItems}></ExpireItem>
+                <div className="col-md-6 todolist row">
+                    <h1>Expired Items</h1>
+                    <ExpireItem onItemDelete={this.handleDeleteItem.bind(this)} data={this.state.expireItems}></ExpireItem>
+                    <ItemsLeft data={this.state.expireItems.length}></ItemsLeft>
                 </div>
             </div>
 
@@ -71,18 +75,22 @@ class ExpireItem extends React.Component {
     constructor(props) {
         super(props);
     }
+    handleDeleteItem(event) {
+        this.props.onItemDelete(event.currentTarget.getAttribute("data-id"))
+    }
     render() {
         var items = this.props.data.map(function (item) {
             return (
             <li className="ui-state-default">
               <div className="checkbox">
-                <label>
-                  <input type="checkbox" data-id={item.Id} defaultValue />{item.Description}
-                </label>
+                  {item.Description}
+                    <button onClick={this.handleDeleteItem.bind(this)} data-id={item.Id} className="remove-item btn btn-default btn-xs pull-right">
+                <span className="glyphicon glyphicon-remove" />
+                    </button>
               </div>
             </li>
             );
-        });
+        }.bind(this));
         return (
             <ul id="sortable" className="list-unstyled">
                 {items}
@@ -158,18 +166,17 @@ class ListItem extends React.Component {
         event.target.checked = false;
     }
     render() {
-        var seft = this;
         var items = this.props.data.map(function (item) {
             return (
             <li className="ui-state-default">
               <div className="checkbox">
                 <label>
-                  <input onClick={seft.handleDoneItem.bind(this)} type="checkbox" data-id={item.Id} defaultValue />{item.Description}
+                  <input onClick={this.handleDoneItem.bind(this)} type="checkbox" data-id={item.Id} defaultValue />{item.Description}
                 </label>
               </div>
             </li>
             );
-        });
+        }.bind(this));
         return (
             <div className="row">
                 <ul id="sortable" className="list-unstyled">
@@ -204,6 +211,7 @@ class AlreadyDone extends React.Component {
               <ul id="done-items" className="list-unstyled">
                   {doneItem}
               </ul>
+              <ItemsLeft data={this.props.data.length}></ItemsLeft>
             </div>
           </div>
   );

@@ -18,7 +18,7 @@ namespace ServiceImplementations
 
         public List<ToDoItem> GetAllToDoItem()
         {
-            var model = this.collection.Find(c=>c.IsExpired==false).OrderByDescending(c => c.CreateTime.Date).ThenBy(c => c.CreateTime.TimeOfDay).ToList();
+            var model = this.collection.FindAll().OrderByDescending(c => c.CreateTime.Date).ThenBy(c => c.CreateTime.TimeOfDay).ToList();
             return model;
         }
 
