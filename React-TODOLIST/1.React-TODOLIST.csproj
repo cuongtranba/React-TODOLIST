@@ -333,6 +333,17 @@
     <Content Include="bower_components\jquery\src\var\support.js" />
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
+    <Content Include="bower_components\react-modal\dist\react-modal.js" />
+    <Content Include="bower_components\react-modal\dist\react-modal.min.js" />
+    <Content Include="bower_components\react-modal\lib\components\Modal.js" />
+    <Content Include="bower_components\react-modal\lib\components\ModalPortal.js" />
+    <Content Include="bower_components\react-modal\lib\helpers\ariaAppHider.js" />
+    <Content Include="bower_components\react-modal\lib\helpers\focusManager.js" />
+    <Content Include="bower_components\react-modal\lib\helpers\scopeTab.js" />
+    <Content Include="bower_components\react-modal\lib\helpers\tabbable.js" />
+    <Content Include="bower_components\react-modal\lib\index.js" />
+    <Content Include="bower_components\react-modal\webpack.config.js" />
+    <Content Include="bower_components\react-modal\webpack.dist.config.js" />
     <Content Include="bower_components\react\react-dom-server.js" />
     <Content Include="bower_components\react\react-dom-server.min.js" />
     <Content Include="bower_components\react\react-dom.js" />
@@ -466,6 +477,18 @@
     <Content Include="bower_components\react\bower.json" />
     <Content Include="bower_components\react\LICENSE" />
     <Content Include="bower_components\react\PATENTS" />
+    <Content Include="bower_components\react-modal\.bower.json" />
+    <Content Include="bower_components\react-modal\bower.json" />
+    <Content Include="bower_components\react-modal\CHANGELOG.md" />
+    <Content Include="bower_components\react-modal\eslint.json" />
+    <Content Include="bower_components\react-modal\LICENSE" />
+    <Content Include="bower_components\react-modal\README.md" />
+    <Content Include="bower_components\react-modal\scripts\build" />
+    <Content Include="bower_components\react-modal\scripts\dev-examples" />
+    <Content Include="bower_components\react-modal\scripts\preview-release" />
+    <Content Include="bower_components\react-modal\scripts\release" />
+    <Content Include="bower_components\react-modal\scripts\test" />
+    <Content Include="bower_components\react-modal\UPGRADE_GUIDE.md" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -496,6 +519,7 @@
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="scripts\Todo.jsx" />
+    <Content Include="scripts\ModalPopup.jsx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
