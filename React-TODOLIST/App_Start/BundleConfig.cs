@@ -10,7 +10,7 @@ namespace React_TODOLIST
         {
 
             bundles.Add(new BabelBundle("~/bundles/main").Include(
-                "~/scripts/Todo.jsx"
+                "~/scripts/*.jsx"
             ));
 
             // Forces files to be combined and minified in debug mode

@@ -76,7 +76,7 @@ class ExpireItem extends React.Component {
         super(props);
     }
     handleDeleteItem(event) {
-        this.props.onItemDelete(event.currentTarget.getAttribute("data-id"))
+        this.props.onItemDelete(event.currentTarget.getAttribute("data-id"));
     }
     render() {
         var items = this.props.data.map(function (item) {
@@ -230,3 +230,5 @@ class ItemsLeft extends React.Component {
       );
     }
 }
+
+module.exports = ToDoListSkeleton

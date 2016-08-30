@@ -1,0 +1,28 @@
+{
+  "name": "react-todolist",
+  "version": "1.0.0",
+  "description": "reactjs for .net",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuongtranba/React-TODOLIST.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "cuongtranba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuongtranba/React-TODOLIST/issues"
+  },
+  "homepage": "https://github.com/cuongtranba/React-TODOLIST#readme",
+  "devDependencies": {
+    "expose-loader": "^0.7.1",
+    "jsx-loader": "^0.13.2",
+    "webpack": "^1.13.2",
+    "webpack-notifier": "^1.4.1"
+  }
+}
