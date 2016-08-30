@@ -6,6 +6,7 @@
             doneItem: this.props.initialData.filter(c=>c.IsActive === false),
             expireItems: this.props.initialData.filter(c=>c.IsExpired === true)
         }
+        $('body').append("asdasd");
     }
     handleItemSubmit(item) {
         var todolist = this.state.data;
