@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
-using System.Web.Configuration;
 using System.Web.Mvc;
 using Autofac;
-using Autofac.Core;
 using Autofac.Integration.Mvc;
 
 namespace React_TODOLIST

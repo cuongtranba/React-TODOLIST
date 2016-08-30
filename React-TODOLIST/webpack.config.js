@@ -14,9 +14,9 @@ module.exports = {
     },
     module: {
         loaders: [
-          // Transform JSX in .jsx files
-          { test: /\.jsx$/, loader: 'jsx-loader?harmony' }
-        ],
+            // Transform JSX in .jsx files
+            { test: /\.jsx$/, loader: 'jsx-loader?harmony' }
+        ]
     },
     resolve: {
         // Allow require('./blah') to require blah.jsx
