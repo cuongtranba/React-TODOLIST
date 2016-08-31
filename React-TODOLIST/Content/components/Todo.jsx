@@ -1,12 +1,22 @@
-﻿class ToDoListSkeleton extends React.Component {
+﻿var $ = require("jquery");
+class ToDoListSkeleton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.initialData.filter(c=>c.IsActive && c.IsExpired === false),
-            doneItem: this.props.initialData.filter(c=>c.IsActive === false),
-            expireItems: this.props.initialData.filter(c=>c.IsExpired === true)
-        }
-        $('body').append("asdasd");
+            data: [],
+            doneItem: [],
+            expireItems: []
+        };
+    }
+    componentWillMount() {
+        $.get(this.props.urlGetToDoList,
+            function (data) {
+                this.setState({ data: data, doneItem: data,expireItems: data });
+            }.bind(this));
+    }
+    componentDidMount() {
+     
+        
     }
     handleItemSubmit(item) {
         var todolist = this.state.data;
@@ -50,6 +60,7 @@
             }.bind(this));
     }
     render() {
+        console.log(this.state.data);
         return (
             <div>
                 <div className="row">
@@ -231,5 +242,10 @@ class ItemsLeft extends React.Component {
       );
     }
 }
+
+ReactDOM.render(
+  <ToDoListSkeleton urlGetToDoList="/home/gettodo" initialData="[]" addTodoUrl="/home/addtodo" />,
+  document.getElementById('content')
+);
 
 module.exports = ToDoListSkeleton

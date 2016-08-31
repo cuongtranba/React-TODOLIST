@@ -1,12 +1,13 @@
 ﻿"use strict";
-
+var node_dir = __dirname + '/node_modules';
 var path = require('path');
 var WebpackNotifierPlugin = require('webpack-notifier');
 var webpack = require("webpack");
 module.exports = {
     context: path.join(__dirname, 'Content'),
     entry: {
-        server: './server'
+        server: './server',
+        //vendor: ["jquery"]
     },
     output: {
         path: path.join(__dirname, 'build'),
@@ -15,12 +16,16 @@ module.exports = {
     module: {
         loaders: [
             // Transform JSX in .jsx files
-            { test: /\.jsx$/, loader: 'jsx-loader?harmony'}
+            { test: /\.jsx$/, loader: 'jsx-loader?harmony' },
+            { test: require.resolve("jquery"), loader: "expose?$!expose?jQuery" }
         ]
     },
     resolve: {
         // Allow require('./blah') to require blah.jsx
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx'],
+        alias: {
+            'jquery': node_dir + '/jquery/dist/jquery.js'
+        }
     },
     externals: {
         //// Use external version of React (from CDN for client-side, or
@@ -29,14 +34,12 @@ module.exports = {
     },
     plugins: [
       new WebpackNotifierPlugin(),
-      new webpack.ProvidePlugin({
-          $: 'jquery',
-          jQuery: 'jquery',
-          "window.jQuery": "jquery",
-          React: "React",
-          "window.react": "React",
-          ReactDOM: "react-dom",
-          "window.ReactDOM": "react-dom"
-      })
+      //new webpack.ProvidePlugin({
+      //    $: "jquery", 
+      //    jQuery: "jquery", 
+      //    "window.jQuery": "jquery",    
+      //}),
+      //new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
+
     ]
 };
