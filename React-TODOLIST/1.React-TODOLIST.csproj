@@ -355,6 +355,7 @@
     <Content Include="bower_components\react\react.js" />
     <Content Include="bower_components\react\react.min.js" />
     <Content Include="build\server.bundle.js" />
+    <Content Include="build\vendor.bundle.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\components\index.js" />
@@ -499,6 +500,7 @@
     <Content Include="package.json" />
     <Content Include="webpack.config.js" />
     <Content Include="build\server.bundle.js.map" />
+    <Content Include="build\vendor.bundle.js.map" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />

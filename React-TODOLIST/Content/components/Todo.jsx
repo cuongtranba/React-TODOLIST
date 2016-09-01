@@ -1,12 +1,40 @@
-﻿class ToDoListSkeleton extends React.Component {
+﻿var $ = require("jquery");
+class ToDoListSkeleton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.initialData.filter(c=>c.IsActive && c.IsExpired === false),
-            doneItem: this.props.initialData.filter(c=>c.IsActive === false),
-            expireItems: this.props.initialData.filter(c=>c.IsExpired === true)
-        }
+            data: [],
+            doneItem: [],
+            expireItems: []
+        };
     }
+
+    getDoneItem(data) {
+        return data.filter(c=>c.IsActive === false);
+    }
+
+    getExpireItems(data) {
+        return data.filter(c=>c.IsExpired === true);
+    }
+
+    getDataItems(data) {
+        return data.filter(c=>c.IsActive && c.IsExpired === false);
+    }
+
+    componentWillMount() {
+        $.get(this.props.urlGetToDoList,
+            function (data) {
+                this.setState(
+                {
+                    data: this.getDataItems(data),
+                    doneItem: this.getDoneItem(data),
+                    expireItems: this.getExpireItems(data)
+                });
+            }.bind(this));
+    }
+
+    
+
     handleItemSubmit(item) {
         var todolist = this.state.data;
         var seft = this;
@@ -49,6 +77,7 @@
             }.bind(this));
     }
     render() {
+        console.log(this.state.data);
         return (
             <div>
                 <div className="row">
@@ -231,4 +260,13 @@ class ItemsLeft extends React.Component {
     }
 }
 
+ReactDOM.render(
+    <ToDoListSkeleton 
+        urlGetToDoList="/home/gettodo"
+        addTodoUrl="/home/addtodo" 
+        markAllDoneUrl="/home/markalldone"
+        deleteItemUrl="/home/deleteitem"
+    />,
+  document.getElementById('content')
+);
 module.exports = ToDoListSkeleton
