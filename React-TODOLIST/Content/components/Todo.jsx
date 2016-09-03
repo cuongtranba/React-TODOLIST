@@ -1,5 +1,4 @@
-﻿var $ = require("jquery");
-class ToDoListSkeleton extends React.Component {
+﻿class ToDoListSkeleton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -77,7 +76,6 @@ class ToDoListSkeleton extends React.Component {
             }.bind(this));
     }
     render() {
-        console.log(this.state.data);
         return (
             <div>
                 <div className="row">
@@ -128,23 +126,6 @@ class ExpireItem extends React.Component {
     }
 }
 
-class DoneItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-          <div className="col-md-6">
-            <div className="todolist">
-              <h1>Already Done</h1>
-              <ul id="done-items" className="list-unstyled">
-                <li>Some item <button className="remove-item btn btn-default btn-xs pull-right"><span className="glyphicon glyphicon-remove" /></button></li>
-              </ul>
-            </div>
-          </div>
-      );
-    }
-}
 
 class AddToDo extends React.Component {
     constructor(props) {
@@ -197,7 +178,7 @@ class ListItem extends React.Component {
     render() {
         var items = this.props.data.map(function (item) {
             return (
-            <li className="ui-state-default">
+            <li key={item.Id} className="ui-state-default">
               <div className="checkbox">
                 <label>
                   <input onClick={this.handleDoneItem.bind(this)} type="checkbox" data-id={item.Id} defaultValue />{item.Description}
@@ -221,12 +202,12 @@ class AlreadyDone extends React.Component {
         super(props);
     }
     handleDeleteItem(event) {
-        this.props.onItemDelete(event.currentTarget.getAttribute("data-id"))
+        this.props.onItemDelete(event.currentTarget.getAttribute("data-id"));
     }
     render() {
         var doneItem = this.props.data.map(function (item) {
             return (
-                <li>
+                <li key={item.Id}>
                     {item.Description} <button onClick={this.handleDeleteItem.bind(this)} data-id={item.Id} className="remove-item btn btn-default btn-xs pull-right">
                 <span className="glyphicon glyphicon-remove" />
                     </button>
@@ -266,6 +247,7 @@ ReactDOM.render(
         addTodoUrl="/home/addtodo" 
         markAllDoneUrl="/home/markalldone"
         deleteItemUrl="/home/deleteitem"
+        markItemDone="/home/marktododone"
     />,
   document.getElementById('content')
 );

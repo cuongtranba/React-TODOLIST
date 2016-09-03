@@ -7,7 +7,7 @@ module.exports = {
     context: path.join(__dirname, 'Content'),
     entry: {
         server: './server',
-        //vendor: ["jquery"]
+        vendor: ["jquery","react","react-dom","bootstrap"]
     },
     output: {
         path: path.join(__dirname, 'build'),
@@ -23,23 +23,29 @@ module.exports = {
     resolve: {
         // Allow require('./blah') to require blah.jsx
         extensions: ['', '.js', '.jsx'],
-        alias: {
-            'jquery': node_dir + '/jquery/dist/jquery.js'
-        }
+        //alias: {
+        //    'jquery': node_dir + '/jquery/dist/jquery.js'
+        //}
     },
     externals: {
-        //// Use external version of React (from CDN for client-side, or
-        //// bundled with ReactJS.NET for server-side)
-        react: "React"
+        ////// Use external version of React (from CDN for client-side, or
+        ////// bundled with ReactJS.NET for server-side)
+        //react: "React"
     },
     plugins: [
       new WebpackNotifierPlugin(),
-      //new webpack.ProvidePlugin({
-      //    $: "jquery", 
-      //    jQuery: "jquery", 
-      //    "window.jQuery": "jquery",    
-      //}),
-      //new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
-
+      new webpack.ProvidePlugin({
+          $: "jquery", 
+          jQuery: "jquery", 
+          "window.jQuery": "jquery",
+          React: "react",
+          ReactDOM:"react-dom"
+      }),
+      new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
+      //new webpack.optimize.UglifyJsPlugin({
+      //    compress: {
+      //        warnings: false
+      //    }
+      //})
     ]
 };
