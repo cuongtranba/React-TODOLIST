@@ -49,9 +49,9 @@ namespace SchedulerTask
             // 2) Register jobs
             builder.RegisterModule(new QuartzAutofacJobsModule(dataAccess));
             // 3) register IQuartzScheduler
-            builder.RegisterAssemblyTypes(dataAccess).Where(c => c.Name.EndsWith("Job")).As<IQuartzScheduler>();
+            builder.RegisterAssemblyTypes(dataAccess).Where(c => c.Name.EndsWith("Job")).As<IQuartzJob>();
             // 4) register run job
-            builder.Register(c => new JobExecuted(c.Resolve<IEnumerable<IQuartzScheduler>>(), c.Resolve<IScheduler>())).SingleInstance();
+            builder.Register(c => new JobExecuted(c.Resolve<IEnumerable<IQuartzJob>>(), c.Resolve<IScheduler>())).SingleInstance();
         }
     }
 }

@@ -4,7 +4,7 @@ using ServiceInterfaces;
 namespace SchedulerTask.Jobs
 {
     [DisallowConcurrentExecution]
-    public class ExpiredTaskJob:IJob, IQuartzScheduler
+    public class ExpiredTaskJob:BaseJob
     {
         private IToDoItemService itemService;
 
@@ -13,19 +13,19 @@ namespace SchedulerTask.Jobs
             this.itemService = itemService;
         }
 
-        public void Execute(IJobExecutionContext context)
+        public override void ExecuteJob(IJobExecutionContext context)
         {
             itemService.DeActiveTaskWhenExpired(App.Default.ExpriredTime);
         }
 
-        public IJobDetail GetJobDetail()
+        public override IJobDetail GetJobDetail()
         {
             return JobBuilder.Create<ExpiredTaskJob>()
                     .WithIdentity(App.Default.ExpiredTaskJob, "group1")
                     .Build();
         }
 
-        public ITrigger GetJobTrigger()
+        public override ITrigger GetJobTrigger()
         {
             return TriggerBuilder.Create()
                 .WithIdentity(App.Default.TriggerExpiredTaskJob, "group1")

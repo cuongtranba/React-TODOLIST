@@ -4,21 +4,21 @@ using Quartz;
 namespace SchedulerTask.Jobs
 {
     [DisallowConcurrentExecution]
-    public class HiJob : IJob,IQuartzScheduler
+    public class HiJob : BaseJob
     {
-        public void Execute(IJobExecutionContext context)
+        public override void ExecuteJob(IJobExecutionContext context)
         {
             Console.WriteLine("Greetings from Hi!");
-        }
 
-        public IJobDetail GetJobDetail()
+        }
+        public override IJobDetail GetJobDetail()
         {
             return JobBuilder.Create<HiJob>()
                     .WithIdentity("hi_job2", "group1")
                     .Build();
         }
 
-        public ITrigger GetJobTrigger()
+        public override ITrigger GetJobTrigger()
         {
             return TriggerBuilder.Create()
                 .WithIdentity("hi_trigger2", "group1")

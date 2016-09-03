@@ -100,11 +100,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>App.settings</DependentUpon>
     </Compile>
+    <Compile Include="Jobs\BaseJob.cs" />
     <Compile Include="Jobs\ExpiredTaskJob.cs" />
     <Compile Include="Jobs\HiJob.cs" />
     <Compile Include="Jobs\HelloJob.cs" />
     <Compile Include="IOCConfig.cs" />
-    <Compile Include="Jobs\IQuartzScheduler.cs" />
+    <Compile Include="Jobs\IQuartzJob.cs" />
     <Compile Include="Jobs\JobExecuted.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

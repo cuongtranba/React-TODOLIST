@@ -5,9 +5,9 @@ namespace SchedulerTask.Jobs
 {
     public class JobExecuted
     {
-        private readonly IEnumerable<IQuartzScheduler> quartzSchedulers;
+        private readonly IEnumerable<IQuartzJob> quartzSchedulers;
         private IScheduler scheduler;
-        public JobExecuted(IEnumerable<IQuartzScheduler> quartzSchedulers, IScheduler scheduler)
+        public JobExecuted(IEnumerable<IQuartzJob> quartzSchedulers, IScheduler scheduler)
         {
             this.quartzSchedulers = quartzSchedulers;
             this.scheduler = scheduler;

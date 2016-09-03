@@ -2,7 +2,7 @@
 
 namespace SchedulerTask.Jobs
 {
-    public interface IQuartzScheduler
+    public interface IQuartzJob:IJob
     {
         IJobDetail GetJobDetail();
         ITrigger GetJobTrigger();
