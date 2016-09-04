@@ -7,12 +7,13 @@ module.exports = {
     context: path.join(__dirname, 'Content'),
     entry: {
         server: './server',
-        vendor: ["jquery","react","react-dom","bootstrap"]
+        vendor: ["jquery", "react", "react-dom", "bootstrap", "bootstrap-validator"]
     },
     output: {
         path: path.join(__dirname, 'build'),
         filename: '[name].bundle.js'
     },
+    watch: true,
     module: {
         loaders: [
             // Transform JSX in .jsx files

@@ -18,6 +18,7 @@ namespace SchedulerTask.Jobs
                 Console.WriteLine($"start time:{DateTime.Now} - {GetJobDetail().Key} - {GetJobDetail().Description}");
                 ExecuteJob(context);
                 Console.WriteLine($"end time:{DateTime.Now} - {GetJobDetail().Key} - {GetJobDetail().Description}");
+                Console.WriteLine("------------------------------------------------------------");
             }
             catch (JobExecutionException jobExecutionException)
             {

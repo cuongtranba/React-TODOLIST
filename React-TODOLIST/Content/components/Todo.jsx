@@ -1,4 +1,5 @@
-﻿class ToDoListSkeleton extends React.Component {
+﻿var Helper = require('./helper.js');
+class ToDoListSkeleton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +33,7 @@
             }.bind(this));
     }
 
-    
+
 
     handleItemSubmit(item) {
         var todolist = this.state.data;
@@ -132,16 +133,24 @@ class AddToDo extends React.Component {
         super(props);
     }
     handleAddItem(event) {
-        if (event.key === "Enter") {
+        event.preventDefault();
+        if (Helper.FormValidate(event.target.id)) {
             this.props.onItemSubmit(this.refs.Description.value.trim());
             this.refs.Description.value = "";
         }
+        
     }
     render() {
         return (
       <div className="row">
-        <h1>Todos</h1>
-          <input type="text" ref="Description" onKeyPress={this.handleAddItem.bind(this)} className="form-control add-todo" placeholder="Add todo" />
+          <form id="add-item-form" onSubmit={this.handleAddItem.bind(this)} role="form" data-toggle="validator">
+              <div className="form-group">
+                  <h1>Todos</h1>
+                    <input type="text" data-minlength="6" data-error="item is required" required ref="Description" className="form-control add-todo" placeholder="Add todo" />
+                      <div className="help-block with-errors"></div>
+              </div>
+            <button className="btn btn-success" type="submit">Add new item</button>
+          </form>
       </div>
     );
     }
@@ -242,13 +251,11 @@ class ItemsLeft extends React.Component {
 }
 
 ReactDOM.render(
-    <ToDoListSkeleton 
-        urlGetToDoList="/home/gettodo"
-        addTodoUrl="/home/addtodo" 
-        markAllDoneUrl="/home/markalldone"
-        deleteItemUrl="/home/deleteitem"
-        markItemDone="/home/marktododone"
-    />,
+    <ToDoListSkeleton urlGetToDoList="/home/gettodo"
+                      addTodoUrl="/home/addtodo"
+                      markAllDoneUrl="/home/markalldone"
+                      deleteItemUrl="/home/deleteitem"
+                      markItemDone="/home/marktododone" />,
   document.getElementById('content')
 );
 module.exports = ToDoListSkeleton
