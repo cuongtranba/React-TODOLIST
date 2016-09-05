@@ -7,7 +7,7 @@ module.exports = {
     context: path.join(__dirname, 'Content'),
     entry: {
         server: './server',
-        vendor: ["jquery", "react", "react-dom", "bootstrap", "bootstrap-validator"]
+        vendor: ["jquery", "react", "react-dom", "bootstrap", "bootstrap-validator", "reflux"]
     },
     output: {
         path: path.join(__dirname, 'build'),

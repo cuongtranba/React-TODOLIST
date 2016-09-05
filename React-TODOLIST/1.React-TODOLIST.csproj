@@ -358,8 +358,10 @@
     <Content Include="build\vendor.bundle.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\components\actions.js" />
     <Content Include="Content\components\helper.js" />
     <Content Include="Content\components\index.js" />
+    <Content Include="Content\components\store.js" />
     <Content Include="Content\server.js" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -499,6 +501,7 @@
     <Content Include="scripts\DoneItem.jsx" />
     <Content Include="Properties\webjobs-list.json" />
     <Content Include="package.json" />
+    <None Include="scripts\_references.js" />
     <Content Include="static\todolistexample.gif" />
     <Content Include="webpack.config.js" />
     <Content Include="build\server.bundle.js.map" />
