@@ -10,6 +10,10 @@ React-TODOLIST just a reactjs.net example with with a few basic features.
 ### Remaining features
   - see https://github.com/cuongtranba/React-TODOLIST/issues
 
+### Example:
+
+![alt tag](https://github.com/cuongtranba/React-TODOLIST/blob/master/React-TODOLIST/static/todolistexample.gif)
+
 ### Getting stated:
     $ npm install 
     
