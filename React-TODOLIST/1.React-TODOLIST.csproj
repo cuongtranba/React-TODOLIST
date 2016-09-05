@@ -499,6 +499,7 @@
     <Content Include="scripts\DoneItem.jsx" />
     <Content Include="Properties\webjobs-list.json" />
     <Content Include="package.json" />
+    <Content Include="static\todolistexample.gif" />
     <Content Include="webpack.config.js" />
     <Content Include="build\server.bundle.js.map" />
     <Content Include="build\vendor.bundle.js.map" />

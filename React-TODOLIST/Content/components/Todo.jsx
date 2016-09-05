@@ -146,7 +146,7 @@ class AddToDo extends React.Component {
           <form id="add-item-form" onSubmit={this.handleAddItem.bind(this)} role="form" data-toggle="validator">
               <div className="form-group">
                   <h1>Todos</h1>
-                    <input type="text" data-minlength="6" data-error="item is required" required ref="Description" className="form-control add-todo" placeholder="Add todo" />
+                    <input type="text" data-minlength="6" data-error="Minimum of 6 characters" required ref="Description" className="form-control add-todo" placeholder="Add todo" />
                       <div className="help-block with-errors"></div>
               </div>
             <button className="btn btn-success" type="submit">Add new item</button>
