@@ -7,7 +7,7 @@ module.exports = {
     context: path.join(__dirname, 'Content'),
     entry: {
         server: './server',
-        vendor: ["jquery", "react", "react-dom", "bootstrap", "bootstrap-validator", "reflux"]
+        vendor: ["jquery", "reflux", "react", "react-dom", "bootstrap", "bootstrap-validator"]
     },
     output: {
         path: path.join(__dirname, 'build'),
@@ -40,7 +40,8 @@ module.exports = {
           jQuery: "jquery", 
           "window.jQuery": "jquery",
           React: "react",
-          ReactDOM:"react-dom"
+          ReactDOM: "react-dom",
+          Reflux: "reflux"
       }),
       new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
       //new webpack.optimize.UglifyJsPlugin({

@@ -1,5 +1,6 @@
 ﻿var Helper = require('./helper.js');
-class ToDoListSkeleton extends React.Component {
+Reflux.defineReact(React, Reflux);
+class ToDoListSkeleton extends Reflux.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -99,7 +100,7 @@ class ToDoListSkeleton extends React.Component {
     }
 }
 
-class ExpireItem extends React.Component {
+class ExpireItem extends Reflux.Component {
     constructor(props) {
         super(props);
     }
@@ -156,7 +157,7 @@ class AddToDo extends React.Component {
     }
 }
 
-class MaskAllDone extends React.Component {
+class MaskAllDone extends Reflux.Component {
     constructor(props) {
         super(props);
     }
@@ -175,7 +176,7 @@ class MaskAllDone extends React.Component {
     }
 }
 
-class ListItem extends React.Component {
+class ListItem extends Reflux.Component {
     constructor(props) {
         super(props);
     }
@@ -237,7 +238,7 @@ class AlreadyDone extends React.Component {
     }
 }
 
-class ItemsLeft extends React.Component {
+class ItemsLeft extends Reflux.Component {
     constructor(props) {
         super(props);
     }
