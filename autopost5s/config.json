@@ -1,0 +1,39 @@
+{
+    "accounts":[
+        {
+            "username":"trquang2999",
+            "password":"tranquang",
+            "website":"nhattao",
+            "linkup":[
+                "https://nhattao.com/threads/karaoke-hanet-hd-va-hd-air-4tb.7203947",
+                "https://nhattao.com/threads/lo-vi-song-samsung-me731k-20-lit-800-000.7202906",
+                "https://nhattao.com/threads/linksys-re6500-bo-mo-rong-wifi-bien-loa-thuong-thanh-loa-khong-day.7202893",
+                "https://nhattao.com/threads/modem-wifi-fpt-g-93rg1-80k.7203950"
+            ],
+            "upInEvery":10,
+			"upTime": 10,
+            "loginPage":"https://nhattao.com/login",
+            "submitLoginSelector":"#pageLogin > dl.ctrlUnit.submitUnit > dd > input",
+            "userSelector":"#pageLogin > dl:nth-child(2) > dd > input",
+            "passwordSelector":"#ctrl_pageLogin_registered_Disabler > input",
+            "upSelector":"#upButtonCountdown"
+        },
+        {
+            "username":"rapid_win7",
+            "password":"tranquang",
+            "website":"5giay",
+            "linkup":[
+                "https://www.5giay.vn/threads/karaoke-hanet-hd-va-hd-air-4tb.8966377",
+                "https://www.5giay.vn/threads/modem-wifi-fpt-g-93rg1-100k.8966381",
+                "https://www.5giay.vn/threads/router-draytek-vigor-2925-full-box-new-99.8966382"
+            ],
+            "upInEvery":10,
+			"upTime":10,
+            "loginPage":"https://www.5giay.vn/login",
+            "submitLoginSelector":"#pageLogin > dl.ctrlUnit.submitUnit > dd > input",
+            "userSelector":"#ctrl_pageLogin_login",
+            "passwordSelector":"#ctrl_pageLogin_password",
+            "upSelector":"#content > div > div > div.mainContainer > div > div:nth-child(5) > div:nth-child(2) > a"
+        }
+    ]
+}

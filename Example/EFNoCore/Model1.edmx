@@ -1,0 +1,807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ForTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attributes">
+          <Key>
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="AttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttributeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttributeTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DataSourceUrl" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsRequired" Type="bit" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AttributeTypes">
+          <Key>
+            <PropertyRef Name="AttributeTypeId" />
+          </Key>
+          <Property Name="AttributeTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttributeDefaultValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttributeTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategoryDetails">
+          <Key>
+            <PropertyRef Name="CategoryDetailId" />
+          </Key>
+          <Property Name="CategoryDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryDetailName" Type="nvarchar(max)" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyBrands">
+          <Key>
+            <PropertyRef Name="CompanyBrandId" />
+          </Key>
+          <Property Name="CompanyBrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyBrandName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntityAttributes">
+          <Key>
+            <PropertyRef Name="EntityAttributeId" />
+          </Key>
+          <Property Name="EntityAttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+          <Property Name="Column" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EntityAttributeValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EntityId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Row" Type="int" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entitys">
+          <Key>
+            <PropertyRef Name="EntityId" />
+          </Key>
+          <Property Name="EntityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EntityTypeId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntityTypeAttributes">
+          <Key>
+            <PropertyRef Name="EntityTypeAttributeId" />
+          </Key>
+          <Property Name="EntityTypeAttributeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+          <Property Name="AttributeId" Type="int" Nullable="false" />
+          <Property Name="EntityTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntityTypes">
+          <Key>
+            <PropertyRef Name="EntityTypeId" />
+          </Key>
+          <Property Name="EntityTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EntityTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Taxs">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="TaxName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Warehouses">
+          <Key>
+            <PropertyRef Name="WarehouseId" />
+          </Key>
+          <Property Name="WarehouseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="UpdatedByUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Attributes_AttributeTypes_AttributeTypeId">
+          <End Role="AttributeTypes" Type="Self.AttributeTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Attributes" Type="Self.Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttributeTypes">
+              <PropertyRef Name="AttributeTypeId" />
+            </Principal>
+            <Dependent Role="Attributes">
+              <PropertyRef Name="AttributeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryDetails_Categories_CategoryId">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CategoryDetails" Type="Self.CategoryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategoryDetails">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityAttributes_Attributes_AttributeId">
+          <End Role="Attributes" Type="Self.Attributes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EntityAttributes" Type="Self.EntityAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="EntityAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityAttributes_Entitys_EntityId">
+          <End Role="Entitys" Type="Self.Entitys" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EntityAttributes" Type="Self.EntityAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entitys">
+              <PropertyRef Name="EntityId" />
+            </Principal>
+            <Dependent Role="EntityAttributes">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entitys_EntityTypes_EntityTypeId">
+          <End Role="EntityTypes" Type="Self.EntityTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entitys" Type="Self.Entitys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityTypes">
+              <PropertyRef Name="EntityTypeId" />
+            </Principal>
+            <Dependent Role="Entitys">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityTypeAttributes_Attributes_AttributeId">
+          <End Role="Attributes" Type="Self.Attributes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EntityTypeAttributes" Type="Self.EntityTypeAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="EntityTypeAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityTypeAttributes_EntityTypes_EntityTypeId">
+          <End Role="EntityTypes" Type="Self.EntityTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EntityTypeAttributes" Type="Self.EntityTypeAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityTypes">
+              <PropertyRef Name="EntityTypeId" />
+            </Principal>
+            <Dependent Role="EntityTypeAttributes">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ForTestModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attributes" EntityType="Self.Attributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttributeTypes" EntityType="Self.AttributeTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryDetails" EntityType="Self.CategoryDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyBrands" EntityType="Self.CompanyBrands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntityAttributes" EntityType="Self.EntityAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entitys" EntityType="Self.Entitys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntityTypeAttributes" EntityType="Self.EntityTypeAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntityTypes" EntityType="Self.EntityTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taxs" EntityType="Self.Taxs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Warehouses" EntityType="Self.Warehouses" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Attributes_AttributeTypes_AttributeTypeId" Association="Self.FK_Attributes_AttributeTypes_AttributeTypeId">
+            <End Role="AttributeTypes" EntitySet="AttributeTypes" />
+            <End Role="Attributes" EntitySet="Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryDetails_Categories_CategoryId" Association="Self.FK_CategoryDetails_Categories_CategoryId">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategoryDetails" EntitySet="CategoryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityAttributes_Attributes_AttributeId" Association="Self.FK_EntityAttributes_Attributes_AttributeId">
+            <End Role="Attributes" EntitySet="Attributes" />
+            <End Role="EntityAttributes" EntitySet="EntityAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityAttributes_Entitys_EntityId" Association="Self.FK_EntityAttributes_Entitys_EntityId">
+            <End Role="Entitys" EntitySet="Entitys" />
+            <End Role="EntityAttributes" EntitySet="EntityAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entitys_EntityTypes_EntityTypeId" Association="Self.FK_Entitys_EntityTypes_EntityTypeId">
+            <End Role="EntityTypes" EntitySet="EntityTypes" />
+            <End Role="Entitys" EntitySet="Entitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityTypeAttributes_Attributes_AttributeId" Association="Self.FK_EntityTypeAttributes_Attributes_AttributeId">
+            <End Role="Attributes" EntitySet="Attributes" />
+            <End Role="EntityTypeAttributes" EntitySet="EntityTypeAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityTypeAttributes_EntityTypes_EntityTypeId" Association="Self.FK_EntityTypeAttributes_EntityTypes_EntityTypeId">
+            <End Role="EntityTypes" EntitySet="EntityTypes" />
+            <End Role="EntityTypeAttributes" EntitySet="EntityTypeAttributes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ForTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attribute">
+          <Key>
+            <PropertyRef Name="AttributeId" />
+          </Key>
+          <Property Name="AttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttributeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DataSourceUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsRequired" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AttributeType" Relationship="Self.FK_Attributes_AttributeTypes_AttributeTypeId" FromRole="Attributes" ToRole="AttributeTypes" />
+          <NavigationProperty Name="EntityAttributes" Relationship="Self.FK_EntityAttributes_Attributes_AttributeId" FromRole="Attributes" ToRole="EntityAttributes" />
+          <NavigationProperty Name="EntityTypeAttributes" Relationship="Self.FK_EntityTypeAttributes_Attributes_AttributeId" FromRole="Attributes" ToRole="EntityTypeAttributes" />
+        </EntityType>
+        <EntityType Name="AttributeType">
+          <Key>
+            <PropertyRef Name="AttributeTypeId" />
+          </Key>
+          <Property Name="AttributeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeDefaultValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttributeTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attributes" Relationship="Self.FK_Attributes_AttributeTypes_AttributeTypeId" FromRole="AttributeTypes" ToRole="Attributes" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoryDetails" Relationship="Self.FK_CategoryDetails_Categories_CategoryId" FromRole="Categories" ToRole="CategoryDetails" />
+        </EntityType>
+        <EntityType Name="CategoryDetail">
+          <Key>
+            <PropertyRef Name="CategoryDetailId" />
+          </Key>
+          <Property Name="CategoryDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryDetailName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_CategoryDetails_Categories_CategoryId" FromRole="CategoryDetails" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="CompanyBrand">
+          <Key>
+            <PropertyRef Name="CompanyBrandId" />
+          </Key>
+          <Property Name="CompanyBrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyBrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntityAttribute">
+          <Key>
+            <PropertyRef Name="EntityAttributeId" />
+          </Key>
+          <Property Name="EntityAttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <Property Name="Column" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EntityAttributeValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntityId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Row" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attribute" Relationship="Self.FK_EntityAttributes_Attributes_AttributeId" FromRole="EntityAttributes" ToRole="Attributes" />
+          <NavigationProperty Name="Entity" Relationship="Self.FK_EntityAttributes_Entitys_EntityId" FromRole="EntityAttributes" ToRole="Entitys" />
+        </EntityType>
+        <EntityType Name="Entity">
+          <Key>
+            <PropertyRef Name="EntityId" />
+          </Key>
+          <Property Name="EntityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EntityAttributes" Relationship="Self.FK_EntityAttributes_Entitys_EntityId" FromRole="Entitys" ToRole="EntityAttributes" />
+          <NavigationProperty Name="EntityType" Relationship="Self.FK_Entitys_EntityTypes_EntityTypeId" FromRole="Entitys" ToRole="EntityTypes" />
+        </EntityType>
+        <EntityType Name="EntityTypeAttribute">
+          <Key>
+            <PropertyRef Name="EntityTypeAttributeId" />
+          </Key>
+          <Property Name="EntityTypeAttributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="AttributeId" Type="Int32" Nullable="false" />
+          <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attribute" Relationship="Self.FK_EntityTypeAttributes_Attributes_AttributeId" FromRole="EntityTypeAttributes" ToRole="Attributes" />
+          <NavigationProperty Name="EntityType" Relationship="Self.FK_EntityTypeAttributes_EntityTypes_EntityTypeId" FromRole="EntityTypeAttributes" ToRole="EntityTypes" />
+        </EntityType>
+        <EntityType Name="EntityType">
+          <Key>
+            <PropertyRef Name="EntityTypeId" />
+          </Key>
+          <Property Name="EntityTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EntityTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Entitys" Relationship="Self.FK_Entitys_EntityTypes_EntityTypeId" FromRole="EntityTypes" ToRole="Entitys" />
+          <NavigationProperty Name="EntityTypeAttributes" Relationship="Self.FK_EntityTypeAttributes_EntityTypes_EntityTypeId" FromRole="EntityTypes" ToRole="EntityTypeAttributes" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tax">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="TaxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="WarehouseId" />
+          </Key>
+          <Property Name="WarehouseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedByUserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Attributes_AttributeTypes_AttributeTypeId">
+          <End Role="AttributeTypes" Type="Self.AttributeType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Attributes" Type="Self.Attribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttributeTypes">
+              <PropertyRef Name="AttributeTypeId" />
+            </Principal>
+            <Dependent Role="Attributes">
+              <PropertyRef Name="AttributeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityAttributes_Attributes_AttributeId">
+          <End Role="Attributes" Type="Self.Attribute" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EntityAttributes" Type="Self.EntityAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="EntityAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityTypeAttributes_Attributes_AttributeId">
+          <End Role="Attributes" Type="Self.Attribute" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EntityTypeAttributes" Type="Self.EntityTypeAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attributes">
+              <PropertyRef Name="AttributeId" />
+            </Principal>
+            <Dependent Role="EntityTypeAttributes">
+              <PropertyRef Name="AttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryDetails_Categories_CategoryId">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CategoryDetails" Type="Self.CategoryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategoryDetails">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityAttributes_Entitys_EntityId">
+          <End Role="Entitys" Type="Self.Entity" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EntityAttributes" Type="Self.EntityAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entitys">
+              <PropertyRef Name="EntityId" />
+            </Principal>
+            <Dependent Role="EntityAttributes">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entitys_EntityTypes_EntityTypeId">
+          <End Role="EntityTypes" Type="Self.EntityType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Entitys" Type="Self.Entity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityTypes">
+              <PropertyRef Name="EntityTypeId" />
+            </Principal>
+            <Dependent Role="Entitys">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntityTypeAttributes_EntityTypes_EntityTypeId">
+          <End Role="EntityTypes" Type="Self.EntityType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EntityTypeAttributes" Type="Self.EntityTypeAttribute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityTypes">
+              <PropertyRef Name="EntityTypeId" />
+            </Principal>
+            <Dependent Role="EntityTypeAttributes">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ForTestEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+          <EntitySet Name="Attributes" EntityType="Self.Attribute" />
+          <EntitySet Name="AttributeTypes" EntityType="Self.AttributeType" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="CategoryDetails" EntityType="Self.CategoryDetail" />
+          <EntitySet Name="CompanyBrands" EntityType="Self.CompanyBrand" />
+          <EntitySet Name="EntityAttributes" EntityType="Self.EntityAttribute" />
+          <EntitySet Name="Entitys" EntityType="Self.Entity" />
+          <EntitySet Name="EntityTypeAttributes" EntityType="Self.EntityTypeAttribute" />
+          <EntitySet Name="EntityTypes" EntityType="Self.EntityType" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Taxs" EntityType="Self.Tax" />
+          <EntitySet Name="Warehouses" EntityType="Self.Warehouse" />
+          <AssociationSet Name="FK_Attributes_AttributeTypes_AttributeTypeId" Association="Self.FK_Attributes_AttributeTypes_AttributeTypeId">
+            <End Role="AttributeTypes" EntitySet="AttributeTypes" />
+            <End Role="Attributes" EntitySet="Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityAttributes_Attributes_AttributeId" Association="Self.FK_EntityAttributes_Attributes_AttributeId">
+            <End Role="Attributes" EntitySet="Attributes" />
+            <End Role="EntityAttributes" EntitySet="EntityAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityTypeAttributes_Attributes_AttributeId" Association="Self.FK_EntityTypeAttributes_Attributes_AttributeId">
+            <End Role="Attributes" EntitySet="Attributes" />
+            <End Role="EntityTypeAttributes" EntitySet="EntityTypeAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryDetails_Categories_CategoryId" Association="Self.FK_CategoryDetails_Categories_CategoryId">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategoryDetails" EntitySet="CategoryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityAttributes_Entitys_EntityId" Association="Self.FK_EntityAttributes_Entitys_EntityId">
+            <End Role="Entitys" EntitySet="Entitys" />
+            <End Role="EntityAttributes" EntitySet="EntityAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entitys_EntityTypes_EntityTypeId" Association="Self.FK_Entitys_EntityTypes_EntityTypeId">
+            <End Role="EntityTypes" EntitySet="EntityTypes" />
+            <End Role="Entitys" EntitySet="Entitys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntityTypeAttributes_EntityTypes_EntityTypeId" Association="Self.FK_EntityTypeAttributes_EntityTypes_EntityTypeId">
+            <End Role="EntityTypes" EntitySet="EntityTypes" />
+            <End Role="EntityTypeAttributes" EntitySet="EntityTypeAttributes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ForTestModelStoreContainer" CdmEntityContainer="ForTestEntities1">
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="ForTestModel.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attributes">
+            <EntityTypeMapping TypeName="ForTestModel.Attribute">
+              <MappingFragment StoreEntitySet="Attributes">
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+                <ScalarProperty Name="AttributeTypeId" ColumnName="AttributeTypeId" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DataSourceUrl" ColumnName="DataSourceUrl" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AttributeTypes">
+            <EntityTypeMapping TypeName="ForTestModel.AttributeType">
+              <MappingFragment StoreEntitySet="AttributeTypes">
+                <ScalarProperty Name="AttributeTypeId" ColumnName="AttributeTypeId" />
+                <ScalarProperty Name="AttributeDefaultValue" ColumnName="AttributeDefaultValue" />
+                <ScalarProperty Name="AttributeTypeName" ColumnName="AttributeTypeName" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ForTestModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryDetails">
+            <EntityTypeMapping TypeName="ForTestModel.CategoryDetail">
+              <MappingFragment StoreEntitySet="CategoryDetails">
+                <ScalarProperty Name="CategoryDetailId" ColumnName="CategoryDetailId" />
+                <ScalarProperty Name="CategoryDetailName" ColumnName="CategoryDetailName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyBrands">
+            <EntityTypeMapping TypeName="ForTestModel.CompanyBrand">
+              <MappingFragment StoreEntitySet="CompanyBrands">
+                <ScalarProperty Name="CompanyBrandId" ColumnName="CompanyBrandId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyBrandName" ColumnName="CompanyBrandName" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntityAttributes">
+            <EntityTypeMapping TypeName="ForTestModel.EntityAttribute">
+              <MappingFragment StoreEntitySet="EntityAttributes">
+                <ScalarProperty Name="EntityAttributeId" ColumnName="EntityAttributeId" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="Column" ColumnName="Column" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EntityAttributeValue" ColumnName="EntityAttributeValue" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entitys">
+            <EntityTypeMapping TypeName="ForTestModel.Entity">
+              <MappingFragment StoreEntitySet="Entitys">
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntityTypeAttributes">
+            <EntityTypeMapping TypeName="ForTestModel.EntityTypeAttribute">
+              <MappingFragment StoreEntitySet="EntityTypeAttributes">
+                <ScalarProperty Name="EntityTypeAttributeId" ColumnName="EntityTypeAttributeId" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+                <ScalarProperty Name="AttributeId" ColumnName="AttributeId" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntityTypes">
+            <EntityTypeMapping TypeName="ForTestModel.EntityType">
+              <MappingFragment StoreEntitySet="EntityTypes">
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EntityTypeName" ColumnName="EntityTypeName" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ForTestModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxs">
+            <EntityTypeMapping TypeName="ForTestModel.Tax">
+              <MappingFragment StoreEntitySet="Taxs">
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouses">
+            <EntityTypeMapping TypeName="ForTestModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouses">
+                <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UpdatedByUserId" ColumnName="UpdatedByUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

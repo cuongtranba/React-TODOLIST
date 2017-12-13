@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4fe447aecc334e45a3c9d654baef8de9" Name="Diagram1">
+        <EntityTypeShape EntityType="ForTestModel.C__EFMigrationsHistory" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.Attribute" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.AttributeType" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.Category" Width="1.5" PointX="2.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.CategoryDetail" Width="1.5" PointX="5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.CompanyBrand" Width="1.5" PointX="7.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.EntityAttribute" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.Entity" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.EntityTypeAttribute" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.EntityType" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.sysdiagram" Width="1.5" PointX="9.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.Tax" Width="1.5" PointX="9.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForTestModel.Warehouse" Width="1.5" PointX="10.75" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="ForTestModel.FK_Attributes_AttributeTypes_AttributeTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ForTestModel.FK_EntityAttributes_Attributes_AttributeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ForTestModel.FK_EntityTypeAttributes_Attributes_AttributeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ForTestModel.FK_CategoryDetails_Categories_CategoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="ForTestModel.FK_EntityAttributes_Entitys_EntityId" ManuallyRouted="false" />
+        <AssociationConnector Association="ForTestModel.FK_Entitys_EntityTypes_EntityTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="ForTestModel.FK_EntityTypeAttributes_EntityTypes_EntityTypeId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
